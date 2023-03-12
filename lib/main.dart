@@ -12,7 +12,14 @@ class MainView extends StatefulWidget {
 class _MainView extends State<MainView> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: InfoPage());
+    return MaterialApp(
+      initialRoute: '/', 
+      routes: {
+        '/': (context) => InfoPage(),
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage()
+      }
+    );
   }
 }
 
@@ -37,9 +44,8 @@ class InfoPage extends StatelessWidget {
                     style: TextStyle(fontSize: 16)),
                 ElevatedButton(
                     onPressed: () => {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LoginPage()))
-                    },
+                          Navigator.pushNamed(context, '/login')
+                        },
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),
                       shape: RoundedRectangleBorder(
@@ -48,8 +54,7 @@ class InfoPage extends StatelessWidget {
                     child: Text('Masuk')),
                 OutlinedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RegisterPage()));
+                      Navigator.pushNamed(context, '/register');
                     },
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),
@@ -122,8 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                         onPressed: () => {
-                          Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LoginPage()))
+                            Navigator.pushNamed(context, '/login')
                         },
                         style: OutlinedButton.styleFrom(
                           minimumSize: const Size.fromHeight(50),
@@ -140,7 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ]),
                     const SizedBox(height: 30),
                     OutlinedButton.icon(
-                      onPressed: () { },
+                      onPressed: () {},
                       style: OutlinedButton.styleFrom(
                         minimumSize: const Size.fromHeight(50),
                         side: const BorderSide(width: 2.0, color: Colors.red),
@@ -179,9 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 }
 
-
 class _LoginPageState extends State<LoginPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -209,8 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                         onPressed: () => {
-                          Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RegisterPage()))
+                            Navigator.pushNamed(context, '/register')
                         },
                         style: OutlinedButton.styleFrom(
                           minimumSize: const Size.fromHeight(50),
@@ -227,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
                     ]),
                     const SizedBox(height: 30),
                     OutlinedButton.icon(
-                      onPressed: () { },
+                      onPressed: () {},
                       style: OutlinedButton.styleFrom(
                         minimumSize: const Size.fromHeight(50),
                         side: const BorderSide(width: 2.0, color: Colors.red),
@@ -252,11 +253,10 @@ class _LoginPageState extends State<LoginPage> {
                         label: const Text('Facebook')),
                     const SizedBox(height: 30),
                     const Text.rich(TextSpan(children: [
-                      TextSpan(
-                          text: 'Belum punya akun? '),
+                      TextSpan(text: 'Belum punya akun? '),
                       TextSpan(
                         text: 'Medaftar ',
-                        style: TextStyle( color: Colors.blue),
+                        style: TextStyle(color: Colors.blue),
                       ),
                       TextSpan(
                         text: 'sekranag',
